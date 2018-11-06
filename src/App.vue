@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/gender.jpeg">
-    <Testowa />
+    <GenderChecker />
   </div>
 </template>
 
 <script>
-import Testowa from './components/Testowa.vue'
+import GenderChecker from './components/GenderChecker.vue'
 
 export default {
   name: 'app',
   components: {
-    Testowa
+    GenderChecker
   }
 }
 </script>

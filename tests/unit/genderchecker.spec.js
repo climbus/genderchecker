@@ -3,17 +3,17 @@ import { shallowMount } from '@vue/test-utils'
 
 import flushPromises from 'flush-promises'
 
-import Testowa from '@/components/Testowa.vue'
+import GenderChecker from '@/components/GenderChecker.vue'
 
-describe('Testowa.vue', () => {
+describe('GederChecker.vue', () => {
   it('shows form', () => {
-    const wrapper = shallowMount(Testowa, {})
+    const wrapper = shallowMount(GenderChecker, {})
     expect(wrapper.html()).toContain('input')
     expect(wrapper.html()).toContain('button')
   })
 
   it('sholud translate gender to polish', () => {
-    const wrapper = shallowMount(Testowa, {
+    const wrapper = shallowMount(GenderChecker, {
       data: function () {
         return { gender: 'female' }
       }
@@ -24,7 +24,7 @@ describe('Testowa.vue', () => {
 
   it('sholud check gender', async () => {
     fetch.mockResponseOnce(JSON.stringify({ gender: 'female' }))
-    const wrapper = shallowMount(Testowa, {})
+    const wrapper = shallowMount(GenderChecker, {})
     wrapper.find('input').setValue('ala')
     wrapper.find('button').trigger('click')
     await flushPromises()
