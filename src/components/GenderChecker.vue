@@ -31,6 +31,7 @@ export default {
   methods: {
     checkName: function () {
       this.gender = ''
+      this.err = ''
       if (this.firstname === '') {
         this.err = 'Imię musi być wpisane!!!'
         return
