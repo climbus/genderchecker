@@ -51,7 +51,8 @@ export default {
           }
         })
         .catch(err => {
-          console.log(err)
+          this.err = "Usługa nie działa"
+          console.error(err)
         })
     }
   }

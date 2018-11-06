@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { shallowMount } from '@vue/test-utils'
 
 import flushPromises from 'flush-promises'
+import mockConsole from 'jest-mock-console'
 
 import GenderChecker from '@/components/GenderChecker.vue'
 
@@ -44,5 +45,28 @@ describe('GederChecker.vue', () => {
     await flushPromises()
     
     expect(wrapper.find('.err').text()).toBe('')
+  })
+
+  it('shows error when firstname not entered', () => {
+    const wrapper = shallowMount(GenderChecker, {})
+
+    wrapper.find('button').trigger('click')
+
+    expect(wrapper.find('.err').text()).not.toBe('')
+  })
+
+  it('shows error when servis is down', async () => {
+    fetch.mockReject(new Error('fake error message'))
+    const restoreConsole = mockConsole()
+    const wrapper = shallowMount(GenderChecker, {})
+
+    wrapper.find('input').setValue('ala')
+    wrapper.find('button').trigger('click')
+    await flushPromises()
+    
+    expect(wrapper.find('.err').text()).not.toBe('')
+    expect(console.error).toHaveBeenCalled();
+    
+    restoreConsole();    
   })
 })

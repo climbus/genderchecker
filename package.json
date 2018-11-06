@@ -25,6 +25,7 @@
     "eslint-plugin-vue": "^5.0.0-0",
     "flush-promises": "^1.0.2",
     "jest-fetch-mock": "^1.6.6",
+    "jest-mock-console": "^0.4.0",
     "vue-template-compiler": "^2.5.17"
   }
 }
